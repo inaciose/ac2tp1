@@ -1,6 +1,9 @@
-        .data
         .equ    inKey, 1
         .equ    putChar, 3
+
+        .data
+        # vazio
+        
         .text
         .globl main
 

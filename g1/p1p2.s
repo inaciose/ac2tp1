@@ -1,5 +1,6 @@
-        .data
         .equ    print_string, 8
+        
+        .data
 str:    .asciiz "AC2 - Aulas práticas\n"
 
         .text

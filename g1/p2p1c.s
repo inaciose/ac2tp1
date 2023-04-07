@@ -1,9 +1,9 @@
-        .data
         .equ printStr, 8
         .equ printInt10, 7
         .equ printInt, 6
         .equ readInt10, 5
 
+        .data
 str1:   .asciiz "\nIntroduza um inteiro (sinal e módulo): "
 str2:   .asciiz "\nValor em base 10 (signed): "
 str3:   .asciiz "\nValor em base 2: "
@@ -83,8 +83,9 @@ do:
         # set left zeros
         li $t1, 5
         sll $t1, $t1, 16
-        # print
+        or $a1, $a1, $t1
 
+        # print
         li $v0, printInt
         syscall
         j do

@@ -48,7 +48,7 @@ int main(void) {
     int scaled;
 
     // init RE6 & RE1
-    LATE = (LATE & 0xFFDB) | 0x0040;
+    LATE = (LATE & 0xFFBD) | 0x0040;
 
     while(1) {
         AD1CON1bits.ASAM = 1;
@@ -56,7 +56,7 @@ int main(void) {
 
         sum = 0;
 
-        int *p = (int *) (&ADC1BUF0);
+        int *p = &ADC1BUF0;
         for(i = 0; i <4; i++) {
             sum+=*p;
             p+=4;

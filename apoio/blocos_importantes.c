@@ -6,7 +6,7 @@
 
 void delay(unsigned int ms) {
     resetCoreTimer();
-    while(readCoreTimer() < ms * KFMS)
+    while(readCoreTimer() < ms * KFMS);
 }
 
 //
@@ -20,7 +20,7 @@ unsigned char toBCD (unsigned char value) {
 }
 
 void send2display(unsigned char value) {
-    char symbols[] = {0x3F, 0x06, 0x5B, 0x4F, 0x66, 0x6D, 0x7D, 0x07, 0x07F, 0x6F, 0x77, 0x7C, 0x39, 0x5E, 0x79, 0x71 };
+    static const char symbols[] = {0x3F, 0x06, 0x5B, 0x4F, 0x66, 0x6D, 0x7D, 0x07, 0x07F, 0x6F, 0x77, 0x7C, 0x39, 0x5E, 0x79, 0x71 };
     static int msd = 1;
 
     static unsigned char digit;
@@ -39,7 +39,7 @@ void send2display(unsigned char value) {
     }
     
     // select segments for digit
-    digit = symbols[digit];
+    digit = symbols[(int)digit];
     // send segments
     LATB = (LATB & 0x80FF) | (digit << 8);
 
